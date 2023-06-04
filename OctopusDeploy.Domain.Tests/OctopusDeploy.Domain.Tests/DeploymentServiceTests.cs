@@ -1,7 +1,6 @@
 using FakeItEasy;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
-using OctopusDeploy.Domain.Repositories;
 using OctopusDeploy.Domain.Repositories.Implementation;
 using OctopusDeploy.Domain.Services;
 
@@ -14,7 +13,7 @@ public class DeploymentServiceTests
     const string ReleaseFileName =  BaseTestFilePath + "Releases.json";
     const string EnvironmentFileName = BaseTestFilePath + "Environments.json";
     
-    private DeploymentService _deploymentService;
+    private readonly DeploymentService _deploymentService;
     
     public DeploymentServiceTests()
     {

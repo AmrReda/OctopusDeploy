@@ -59,6 +59,10 @@ public class DeploymentService : IDeploymentService
             .ToList()
             .FindAll(d => d.EnvironmentId.Equals(envId));
 
+        var deploymentToKeepIds = filteredDeployment.Take(deploymentToKeep).Select(x => x.Id);
+        
+        _logger.LogInformation($"Keep deployment at {string.Join(",", deploymentToKeepIds)} as it the latest deployment");
+        
         var deploymentToRemove = filteredDeployment
             .Skip(deploymentToKeep)
             .ToList();
